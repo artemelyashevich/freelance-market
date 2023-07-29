@@ -23,8 +23,5 @@ export const resetPassword = async (req, res) => {
     if (data.error) {
         return res.status(data.status).json({ message: data.error })
     }
-    res.status(201).json({
-        message: "Password changed",
-        status: "Success"
-    })
+    res.status(201).json({message: "Success"})
 }

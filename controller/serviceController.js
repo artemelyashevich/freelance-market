@@ -5,7 +5,7 @@ const serviceService = new ServiceService()
 export const addService = async (req,res) => {
     const data = await serviceService.createService(req.body)
     if (data.error) {
-        return res.status(data.status).json({ message: "Something went wrong..." })
+        return res.status(data.status).json({ message: data.error })
     }
     res.status(201).json(data)
 }
@@ -13,7 +13,7 @@ export const addService = async (req,res) => {
 export const findAllServices = async (req, res) => {
     const services = await serviceService.findAllServices(req.query)
     if (services.error) {
-        return res.status(data.status).json({ message: "Something went wrong..." })
+        return res.status(services.status).json({ message: services.error })
     }
     res.status(200).json(services)
 }
