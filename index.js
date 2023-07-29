@@ -3,6 +3,9 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import authRouter from "./routes/authRoute.js"
 import reviewRouter from "./routes/reviewRoute.js"
+import serviceRouter from "./routes/serviceRoute.js"
+import orderRouter from "./routes/orderRoute.js"
+import userRouter from "./routes/userRoute.js"
 
 
 dotenv.config()
@@ -20,6 +23,9 @@ app.use(express.json())
 
 app.use(authRouter)
 app.use(reviewRouter)
+app.use(serviceRouter)
+app.use(orderRouter)
+app.use(userRouter)
 
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);

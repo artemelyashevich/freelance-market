@@ -45,3 +45,39 @@ export const editReviewValidation = [
     body('title', 'Invalid title format').isLength({ min: 3 }),
     body('description', 'Invalid description format').isLength({ min: 5 })
 ]
+
+// service
+
+export const addServiceValidation = [
+    body('creatorId', 'Invalid creator id format').isMongoId(),
+    body('title', 'Invalid title format').isLength({ min: 3 }),
+    body('description', 'Invalid description format').isLength({ min: 5 }),
+    body('categoryId', 'Invalid category id format').isMongoId(),
+    body('price', 'Invalid price format').isNumeric()
+]
+
+// order 
+
+export const addOrderValidation = [
+    body('creatorId','Invalid creator id format').isMongoId(),
+    body('title', 'Invalid title format').isLength({min:3}),
+    body('description', 'Invalid description format').isLength({min:3}),
+    body('executorId', 'Invalid executor id format').optional().isLength({min:3}),
+    body('category', 'Invalid category id format').isString(),
+    body('price', 'Invalid price format').isNumeric(),
+    body('deadline', 'Invalid deadline format').isNumeric(),
+    body('technology', 'Invalid technology format').isArray(),
+    body('responses', 'Invalid responses format').isArray(),
+    body('views', 'Invalid views format').isNumeric(),
+    body('status', 'Invalid status format').isString()
+]
+
+export const editOrderValidation = [
+    body('title', 'Invalid title format').isLength({min:3}),
+    body('description', 'Invalid description format').isLength({min:3}),
+    body('category', 'Invalid category id format').isString(),
+    body('price', 'Invalid price format').isNumeric(),
+    body('deadline', 'Invalid deadline format').isNumeric(),
+    body('technology', 'Invalid technology format').isArray(),
+    body('status', 'Invalid status format').isString()
+]

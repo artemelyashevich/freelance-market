@@ -5,10 +5,7 @@ const authService = new AuthService()
 export const registerUser = async (req, res) => {
     const data = await authService.registerUser(req.body)
     if (data.error) {
-        return res.status(400).json({ message: data.error })
-    }
-    if (data.serverError) {
-        return res.status(500).json({ message: "Something went wrong..." })
+        return res.status(data.status).json({ message: data.error })
     }
     res.status(201).json(data)
 }
@@ -16,21 +13,15 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
     const data = await authService.loginUser(req.body)
     if (data.error) {
-        return res.status(400).json({ message: data.error })
-    }
-    if (data.serverError) {
-        return res.status(500).json({ message: "Something went wrong..." })
+        return res.status(data.status).json({ message: data.error })
     }
     res.status(201).json(data)
 }
 
 export const resetPassword = async (req, res) => {
-    const data = await authService.resetPassword(req.body)
+    const data = await authService.resetPassword(req.body, req.headers.authorization)
     if (data.error) {
-        return res.status(400).json({ message: data.error })
-    }
-    if (data.serverError) {
-        return res.status(500).json({ message: "Something went wrong..." })
+        return res.status(data.status).json({ message: data.error })
     }
     res.status(201).json({
         message: "Password changed",
