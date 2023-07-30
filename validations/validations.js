@@ -56,6 +56,12 @@ export const addServiceValidation = [
     body('price', 'Invalid price format').isNumeric()
 ]
 
+// category
+
+export const addCategoryValidation = [
+    body('title', 'Invalid title format').isString()
+]
+
 // order 
 
 export const addOrderValidation = [

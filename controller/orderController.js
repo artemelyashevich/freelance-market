@@ -31,7 +31,7 @@ export const editOrder = async (req, res) => {
     if (data.error) {
         return res.status(data.status).json({ message: data.error })
     }
-    res.status(200).json(data)
+    res.status(201).json(data)
 }
 
 export const deleteOrder = async (req, res) => {
@@ -39,5 +39,5 @@ export const deleteOrder = async (req, res) => {
     if (data.error) {
         return res.status(data.status).json({ message: data.error })
     }
-    res.status(200).json({ message: "Success" })
+    res.status(203).json({ message: "Success" })
 }

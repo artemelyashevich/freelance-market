@@ -1,9 +1,16 @@
 import Category from '../models/category.js'
-import { badRequestError, notFoundError, serverError } from '../utils/HTTPErrors.js'
+import { badRequestError, notFoundError, serverError, unAuthorizedError } from '../utils/HTTPErrors.js'
+import { getIdByToken } from '../utils/getToken.js'
+import User from '../models/user.js'
 
 export class CategoryService {
-    async createCategory(body) {
+    async createCategory(body, token) {
         try {
+            const userId = getIdByToken(token)
+            const user = await User.findById(userId._id)
+            if (user.status != 'Admin'){
+                return unAuthorizedError('No access')
+            }
             const idx = await Category.findOne({
                 title: body.title
             })
@@ -42,25 +49,13 @@ export class CategoryService {
         }
     }
 
-    async editCategory(title, body) {
+    async deleteCategory(title, token) {
         try {
-            const idx = await Category.find({ title: title })
-            if (!idx) {
-                return notFoundError()
+            const userId = getIdByToken(token)
+            const user = await User.findById(userId._id)
+            if (user.status != 'Admin'){
+                return unAuthorizedError('No access')
             }
-            const category = await Category.updateOne(
-                { title: title },
-                body,
-                { returnDocument: 'after' })
-            return category
-        } catch (err) {
-            console.log(err)
-            return serverError()
-        }
-    }
-
-    async deleteCategory(title) {
-        try {
             const idx = await Category.find({ title: title })
             if (!idx) {
                 return notFoundError()

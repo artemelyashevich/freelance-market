@@ -6,6 +6,7 @@ import reviewRouter from "./routes/reviewRoute.js"
 import serviceRouter from "./routes/serviceRoute.js"
 import orderRouter from "./routes/orderRoute.js"
 import userRouter from "./routes/userRoute.js"
+import categoryRouter from "./routes/categoryRoute.js"
 
 
 dotenv.config()
@@ -26,6 +27,7 @@ app.use(reviewRouter)
 app.use(serviceRouter)
 app.use(orderRouter)
 app.use(userRouter)
+app.use(categoryRouter)
 
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
