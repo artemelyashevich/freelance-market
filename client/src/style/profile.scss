@@ -1,0 +1,74 @@
+.profile {
+    background: $intro;
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+
+    &__left {
+        width: 30vw;
+
+        &-img {
+            overflow: hidden;
+            border-radius: 10px;
+            max-width: 50vw;
+        }
+    }
+
+    &__right {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        width: 50vw;
+
+        p {
+            color: grey;
+            font-size: 12px;
+        }
+
+        &-image,
+        &-description,
+        &-resume,
+        &-name,
+        &-email,
+        &-password {
+            margin-left: 10px;
+        }
+
+        &-input {
+            min-width: 47vw;
+            max-width: 47vw;
+            margin: 10px 0;
+        }
+
+        &-save {
+            display: flex;
+            margin: 0 auto;
+            margin-top: 20px;
+            padding: 7px 30px;
+        }
+
+        &-profession {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 10px;
+            margin: 20px 0;
+
+            &_active {
+                background-color: #8fdbff !important;
+
+                &:hover {
+                    color: black !important;
+                    background-color: #d2f1ff !important;
+                }
+            }
+        }
+
+        &-name,
+        &-email {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+}

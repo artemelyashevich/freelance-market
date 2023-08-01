@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Roboto:wght@300;400&family=Titillium+Web:wght@200;400;600;700&display=swap');
+
+$intro: #0c1a35;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    a {
+        text-decoration: none;
+    }
+
+    li {
+        list-style: none;
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+.error {
+    margin-bottom: 10px;
+    color: red;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: -10px;
+}
+
+input,
+textarea {
+    border-radius: 5px;
+    border: 1px solid grey;
+    outline: none;
+    padding: 15px;
+}
+
+button,
+#choice_btn {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 2px solid grey;
+    font-family: 'Titillium Web', sans-serif;
+    transition: all .3s ease;
+
+    &:hover {
+        transition: all .3s ease;
+        background-color: $intro;
+        color: #fff;
+        border: 2px solid #787878;
+    }
+}
+
+.container {
+    max-width: 95vw;
+    margin: 0 auto;
+}
+
+@import 'header';
+@import 'home';
+@import 'footer';
+@import 'modal';
+@import 'profile';
+@import 'about';

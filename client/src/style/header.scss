@@ -1,0 +1,45 @@
+.header {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+    &__logo {
+        cursor: pointer;
+        overflow: hidden;
+
+        img {
+            width: 10vw;
+        }
+    }
+
+    &__input {
+        width: 45vw;
+    }
+
+    &__auth {
+        display: flex;
+        column-gap: 20px;
+    }
+
+    &__user {
+        cursor: pointer;
+
+        h3 {
+            font-weight: 400;
+        }
+
+        &_info {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+            justify-content: center;
+            img {
+                width: 3vw;
+                height: 3vw;
+                border-radius: 50%;
+            }
+        }
+    }
+}
