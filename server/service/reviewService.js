@@ -6,7 +6,7 @@ export class ReviewService {
     async createReview(data) {
         try {
             const review = new Review(data)
-            await data.save()
+            await review.save()
             return review
         } catch (err) {
             console.log(err)

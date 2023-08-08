@@ -17,10 +17,26 @@ export class OrderService {
     async findAllOrders(query) {
         try {
             let orders = await Order.find()
+            if (query.price === 'asc') {
+                orders = await Order.find().sort({ price: 1 })
+            } else if (query.price === 'desc') {
+                orders = await Order.find().sort({ price: -1 })
+            }
             if (query.status) {
-                orders = await Order.find({
-                    status: query.status
-                })
+                orders.filter(item => item.status === query.status)
+            }
+            if (query.creatorId) {
+                orders = orders.filter(item => item.creatorId === query.creatorId)
+            }
+            if (query.executorId) {
+                orders = orders.filter(item => item.executorId === query.executorId)
+            }
+            if (query.technology) {
+                let technology = query.technology.split(',')
+                orders = orders.filter(item => item.technology.some(el => technology.includes(el)))
+            }
+            if (query.category) {
+                orders = orders.filter(item => item.category === query.category)
             }
             return orders
         } catch (err) {
@@ -44,7 +60,7 @@ export class OrderService {
 
     async editOrder(id, body, token) {
         try {
-            const creatorID = getIdByToken(token) 
+            const creatorID = getIdByToken(token)
             const idx = await Order.findOne(
                 { _id: id }
             )
@@ -67,7 +83,7 @@ export class OrderService {
 
     async deleteOrder(id, token) {
         try {
-            const creatorID = getIdByToken(token) 
+            const creatorID = getIdByToken(token)
             const idx = await Order.findOne(
                 { _id: id }
             )

@@ -8,6 +8,8 @@ import orderRouter from "./routes/orderRoute.js"
 import userRouter from "./routes/userRoute.js"
 import categoryRouter from "./routes/categoryRoute.js"
 import cors from 'cors'
+import responseRouter from "./routes/responseRoute.js"
+import technologyRouter from "./routes/technologyRoute.js"
 
 
 dotenv.config()
@@ -24,12 +26,16 @@ const PORT = process.env.PORT || 4444
 app.use(express.json())
 app.use(cors())
 
-app.use(authRouter)
-app.use(reviewRouter)
-app.use(serviceRouter)
-app.use(orderRouter)
-app.use(userRouter)
-app.use(categoryRouter)
+app.use(
+    authRouter,
+    reviewRouter,
+    serviceRouter,
+    orderRouter,
+    userRouter,
+    categoryRouter,
+    responseRouter,
+    technologyRouter)
+
 
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
